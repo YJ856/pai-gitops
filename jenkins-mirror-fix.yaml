@@ -1,0 +1,16 @@
+controller:
+  javaOpts: "-Djava.net.preferIPv4Stack=true"
+
+  # ✅ 플러그인 다운로드는 init 컨테이너에서 하니까 여기 반드시 필요
+  initContainerEnv:
+    - name: JENKINS_UC
+      value: "https://updates.jenkins.io"
+    - name: JENKINS_UC_DOWNLOAD
+      value: "https://ftp.yz.yamagata-u.ac.jp/pub/misc/jenkins"
+
+  # (보험) 메인 컨테이너에도 같이
+  containerEnv:
+    - name: JENKINS_UC
+      value: "https://updates.jenkins.io"
+    - name: JENKINS_UC_DOWNLOAD
+      value: "https://ftp.yz.yamagata-u.ac.jp/pub/misc/jenkins"

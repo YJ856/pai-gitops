@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: conversation-service
+  namespace: default
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: conversation-service
+  template:
+    metadata:
+      labels:
+        app: conversation-service
+    spec:
+      containers:
+      - name: conversation-service
+        image: songhyunkwang/pai-service-conversation:latest
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 3004
+        env:
+        - name: DB_HOST
+          value: postgres
+        - name: REDIS_HOST
+          value: redis
+        envFrom:
+        - secretRef:
+            name: conversation-secrets

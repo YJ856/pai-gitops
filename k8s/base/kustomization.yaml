@@ -2,6 +2,15 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 
 resources:
-  - hello.yaml
   - ai-service-deploy.yaml
   - ai-service-svc.yaml
+  - user-service-deploy.yaml
+  - user-service-svc.yaml
+  - quiz-service-deploy.yaml
+  - quiz-service-svc.yaml
+  - conversation-service-deploy.yaml
+  - conversation-service-svc.yaml
+  - insight-service-deploy.yaml
+  - insight-service-svc.yaml
+  - media-service-deploy.yaml
+  - media-service-svc.yaml

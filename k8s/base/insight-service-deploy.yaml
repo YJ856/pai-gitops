@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: insight-service
+  namespace: default
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: insight-service
+  template:
+    metadata:
+      labels:
+        app: insight-service
+    spec:
+      containers:
+      - name: insight-service
+        image: songhyunkwang/pai-service-insight:latest
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 3003
+        env:
+        - name: DB_HOST
+          value: postgres
+        - name: REDIS_HOST
+          value: redis
+        envFrom:
+        - secretRef:
+            name: insight-secrets
