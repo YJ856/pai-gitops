@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: media-service
-        image: songhyunkwang/pai-service-media:latest
+        image: songhyunkwang/pai-service-media:2
         imagePullPolicy: Always
         ports:
         - containerPort: 3002
